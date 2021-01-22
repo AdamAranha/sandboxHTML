@@ -1,0 +1,13 @@
+
+h1, h2, p{
+    text-align: center;
+}
+
+.section {
+    padding: 70px 0;
+    margin: auto;
+}
+
+#title {
+    padding: 70px 0;
+}
