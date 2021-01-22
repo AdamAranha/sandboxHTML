@@ -1,5 +1,3 @@
-
-
 var playerOption
 var compOption
 var rps = ["rock", "paper", "scissors"]
@@ -8,7 +6,7 @@ var rps = ["rock", "paper", "scissors"]
 function onYourMarks(choice) {
     playerChoice(choice);
     compChoice();
-    decideWinner();
+    stickEmUp();
 }
 
 function playerChoice(choice) {
@@ -22,38 +20,46 @@ function compChoice() {
     document.querySelector("#comp").innerHTML = compOption
 }
 
-function winnerWinner(winner) {
+function declareWinner(winner) {
     document.querySelector("#winnerwinner").innerHTML = winner
 }
 
-function outcome() {
-    if (compOption === "rock") {
+
+function stickEmUp() {
+
+    if (playerOption === compOption) {
         console.log(`It's a tie`)
-        winnerWinner("We're all winners . . . it's a tie")
-    } else if (compOption === "paper") {
-        console.log(`Comp wins`)
-        winnerWinner("Comp wins")
+        declareWinner(`We're all winners . . . it's a tie`)
     } else {
-        console.log(`Player wins`)
-        winnerWinner("Player wins")
+
+        switch (playerOption) {
+
+            case "rock":
+                if (compOption === "paper") {
+                    console.log(`Comp wins`)
+                    declareWinner("Comp wins")
+                } else {
+                    console.log(`Player wins`)
+                    declareWinner(`Player wins`)
+                } break;
+
+            case "paper":
+                if (compOption === "rock") {
+                    console.log(`Player wins`)
+                    declareWinner("Player wins")
+                } else {
+                    console.log(`Comp wins`)
+                    declareWinner("Comp wins")
+                } break;
+
+            case "scissors":
+                if (compOption === "rock") {
+                    console.log(`Comp wins`)
+                    declareWinner("Comp wins")
+                } else {
+                    console.log(`Player wins`)
+                    declareWinner("Player wins")
+                } break;
+        }
     }
 }
-
-function decideWinner() {
-
-    switch (playerOption) {
-
-        case "rock":
-            outcome()
-            break;
-
-        case "paper":
-            outcome()
-            break;
-
-        case "scissors":
-            outcome()
-            break;
-    }
-}
-
